@@ -21,7 +21,6 @@ export class SummaryComponent implements OnInit {
     labels: [],
     datasets: []
   };
-  private summaryUrl = `${environment.baseUrl}/api/charts/summary`;
 
   chartOptions: ChartConfiguration<'bar'>['options'] = {
     responsive: true,
@@ -35,11 +34,13 @@ export class SummaryComponent implements OnInit {
   };
 
   constructor(private http: HttpClient) {}
+  private summaryUrl = `${environment.baseUrl}/api/charts/summary`;
+
 
   ngOnInit(): void {
     const token = localStorage.getItem('jwtToken');
 
-    this.http.get<any>('http://localhost:3000/api/charts/summary', {
+    this.http.get<any>(this.summaryUrl, {
       headers: {
         Authorization: `Bearer ${token}`
       }

@@ -21,7 +21,7 @@ export class ReportsComponent implements OnInit {
   ngOnInit(): void {
     const token = localStorage.getItem('jwtToken');
 
-    this.http.get<any>('http://localhost:3000/api/charts/reports', {
+    this.http.get<any>(this.reportsUrl, {
       headers: { Authorization: `Bearer ${token}` }
     }).subscribe({
       next: (data) => {
