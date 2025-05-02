@@ -7,6 +7,7 @@ import {
   ChartData,
   ChartType
 } from 'chart.js';
+import { environment } from '../../../environments/environment.prod';
 
 @Component({
   selector: 'app-summary',
@@ -20,6 +21,7 @@ export class SummaryComponent implements OnInit {
     labels: [],
     datasets: []
   };
+  private summaryUrl = `${environment.baseUrl}/api/charts/summary`;
 
   chartOptions: ChartConfiguration<'bar'>['options'] = {
     responsive: true,
